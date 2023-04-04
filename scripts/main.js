@@ -18,7 +18,7 @@ btnKeyboard.forEach(el=>{
     const event = evt.target;
     touchKey(event)
   })
-  el.addEventListener('touchlist', evt=>{
+  el.addEventListener('touches', evt=>{
     const event = evt.target;
     touchKey(event)
   })
