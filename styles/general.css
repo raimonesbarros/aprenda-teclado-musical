@@ -255,7 +255,7 @@ main section{
   cursor: pointer;
 }
 
-.keyboard button:hover {background-color: #777;}
+.keyboard button:hover {background-color: #999;}
 
 .keyboard .whites{
   width: 100%;
