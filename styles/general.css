@@ -62,7 +62,7 @@ main section{
   position: relative;
   width: 30% !important;
   min-width: 170px;
-  overflow: hidden;
+  overflow-y: scroll;
   animation: slide .1s forwards ease-out reverse;
 }
 
