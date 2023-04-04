@@ -176,7 +176,7 @@ main section{
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
+  padding-top: 2rem;
   text-align: center;
 }
 
@@ -226,7 +226,6 @@ main section{
 
 .aula .keyboard{
   display: flex;
-  background-color: #555;
   height: 35%;
   max-height: 230px;
   width: 96%;
@@ -237,6 +236,10 @@ main section{
 }
 
 .keyboard .octave{position: relative;}
+
+.keyboard .octave:hover {
+  background-color: transparent;
+}
 
 .keyboard .whites,
 .keyboard .blacks,
