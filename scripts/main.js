@@ -16,8 +16,14 @@ document.addEventListener('click', evt=>{
 btnKeyboard.forEach(el=>{
   el.addEventListener('touchstart', evt=>{
     const event = evt.target;
+      event.preventDefault()
       touchKey(event)
-    })
+  })
+  el.addEventListener('click', evt=>{
+    const event = evt.target;
+      event.preventDefault()
+      touchKey(event)
+  })
 })
 
 function touchKey(event){
