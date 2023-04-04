@@ -1,8 +1,13 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap');
 
 /* Animations */
 @keyframes slide {
   to{transform: translate(-50%);}
+}
+@keyframes error {
+  33.3%{transform: translate(-10px);}
+  66.6%{transform: translate(10px);}
 }
 
 *{
@@ -11,6 +16,7 @@
   box-sizing: border-box;
   list-style: none;
   font-size: 16px;
+  font-family: 'Roboto', sans-serif;
 }
 
 :root{
@@ -18,6 +24,7 @@
   --header: 0px;
   --mainColor: #04AA6D;
   --mainColorDark: #37833a;
+  --colorLigth: #dddddd;
 }
 
 /* General configuration */
@@ -43,15 +50,25 @@ main section{
   overflow: hidden;
 }
 
+.fail{
+  color: red !important;
+  animation: error .1s normal infinite;
+}
+
+.success{color: #1b9c1b;}
+
 /* Left menu */
 .navbar{
   width: 30% !important;
   min-width: 170px;
   overflow: hidden;
-  animation: slide .1s forwards ease-out reverse;}
+  animation: slide .1s forwards ease-out reverse;
+}
+
+.navbar button{text-transform: uppercase;}
 
 .dropbtn, .dropbtn2, .dropbtn3{
-  background-color: #04AA6D;
+  background-color: var(--mainColor);
   width: 100%;
   color: white;
   padding: 16px;
@@ -125,14 +142,33 @@ main section{
 .dropdown2:hover .dropbtn2,
 .dropdown3:hover .dropbtn3,
 .dropbtn2:hover, .dropbtn3:hover
-{background-color: #3e8e41;}
+{background-color: var(--mainColorDark);}
 
-.btn-menu{
+.navbar .conection{
+  background-color: var(--colorLigth);
+  color: #000;
+}
+
+.conection p, h1, h4{
+  padding: .2rem;
+}
+
+.navbar footer{
+  background-color: #333;
+  color: var(--colorLigth);
+  font-weight: bold;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.btn_menu{
   position: absolute;
+  left: .3rem;
+  top: .2rem;
 }
 
 /* Show */
-.show{width: 100%;}
+.show{width: 100%; position: relative;}
 
 .aula{
   height: 100%;
@@ -141,6 +177,7 @@ main section{
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
+  text-align: center;
 }
 
 .aula .video{
@@ -150,7 +187,85 @@ main section{
 }
 
 .aula .title{
+  color: var(--mainColorDark);
+  border: 2px solid var(--mainColorDark);
   font-size: 1.5rem;
-  margin: .5rem;
+  padding: .1rem .5rem;
+  margin: .3rem;
+  border-radius: 10px;
+
 }
 
+.aula h1{font-size: 2rem;}
+
+.aula .graus button{
+  padding: .5rem;
+  border: none;
+}
+
+.aula .graus .current{
+  border: 2px solid var(--mainColor);
+  color: var(--mainColor);
+  border-radius: 10px;
+}
+
+.aula .options button{
+  background-color: var(--mainColor);
+  color: #ddd;
+  border: none;
+  border-radius: 10px;
+  padding: .5rem .75rem;
+  margin-bottom: 1rem;
+}
+
+.aula .options .current{
+  background-color: #ddd;
+  border: 2px solid var(--mainColor);
+  color: var(--mainColor);
+}
+
+.aula .keyboard{
+  display: flex;
+  background-color: #555;
+  height: 35%;
+  max-height: 230px;
+  width: 96%;
+  max-width: 1000px;
+  box-shadow: 0 2px 2px #333;
+  border-top: none;
+  margin: 0 auto;
+}
+
+.keyboard .octave{position: relative;}
+
+.keyboard .whites,
+.keyboard .blacks,
+.keyboard .octave,
+.keyboard button{
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  color: transparent;
+  cursor: pointer;
+}
+
+.keyboard .whites{
+  width: 100%;
+  height: 100%;
+}
+
+.keyboard .blacks{
+  position: absolute;
+  left: 7%;
+  height: 50%;
+}
+
+.keyboard .blacks button{
+  background-color: #000;
+  margin: 0 2.8%;
+  border-radius: 0 0 15% 15%;
+}
+
+.keyboard .blacks .none{
+  visibility: collapse;
+}

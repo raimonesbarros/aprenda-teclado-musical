@@ -6,23 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Raimones</title>
   <link rel="stylesheet" href="styles/general.css">
-  <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="scripts/main.js" defer></script>
+  <script type="module" src="scripts/midi.js" defer></script>
 </head>
 <body>
   <main>
     <section class="container flex">
-      <nav class="navbar flex column between disable">
+      <nav class="navbar flex column between">
         <ul class="nav-list">
-          <li><button class="dropbtn pointer">O teclado</button></li>
-          <li><button class="dropbtn pointer">As notas</button></li>
-          <li><button class="dropbtn pointer">O grau</button></li>
-          <li><button class="dropbtn pointer">Os dedos</button></li>
-          <li><button class="dropbtn pointer">A altura</button></li>
+          <li><button data-aula="teclado" class="ir dropbtn pointer">O teclado</button></li>
+          <li><button  data-aula="notas" class="ir dropbtn pointer">As notas</button></li>
+          <li><button data-aula="grau" class="ir dropbtn pointer">O grau</button></li>
+          <li><button data-aula="dedos" class="ir dropbtn pointer">Os dedos</button></li>
+          <li><button data-aula="altura" class="ir dropbtn pointer">A altura</button></li>
           <li class="dropdown">
             <button class="dropbtn">As Cifras</button>
             <ul class="dropdown-content">
-              <li class=" pointer">Teoria</li>
-              <li class=" pointer">Prática</li>
+              <li data-aula="cifra-teoria" class="ir pointer">Teoria</li>
+              <li data-aula="cifra-pratica" class="ir pointer">Prática</li>
             </ul>
           </li>
           <li class="dropdown">
@@ -31,34 +32,15 @@
               <li class="dropdown2">
                 <button class="dropbtn2">Maior</button>
                 <ul class="dropdown-content2">
-                  <li class=" pointer">Teoria</li>
-                  <li class=" pointer">Prática</li>
+                  <li data-aula="teoria-etM" class="ir pointer">Teoria</li>
+                  <li data-aula="pratica-etM" class="ir pointer">Prática</li>
                 </ul>
               </li>
               <li class="dropdown2">
                 <button class="dropbtn2">Menor</button>
                 <ul class="dropdown-content2">
-                  <li class="dropdown3">
-                    <button class="dropbtn3">Natural</button>
-                    <ul class="dropdown-content3">
-                      <li class=" pointer">Teoria</li>
-                      <li class=" pointer">Prática</li>
-                    </ul>
-                  </li>
-                  <li class="dropdown3">
-                    <button class="dropbtn3">Harmônica</button>
-                    <ul class="dropdown-content3">
-                      <li class=" pointer">Teoria</li>
-                      <li class=" pointer">Prática</li>
-                    </ul>
-                  </li>
-                  <li class="dropdown3">
-                    <button class="dropbtn3">Melódica</button>
-                    <ul class="dropdown-content3">
-                      <li class=" pointer">Teoria</li>
-                      <li class=" pointer">Prática</li>
-                    </ul>
-                  </li>
+                  <li data-aula="teoria-etm" class="ir pointer">Teoria</li>
+                  <li data-aula="pratica-etm" class="ir pointer">Prática</li>
                 </ul>
               </li>
             </ul>
@@ -71,92 +53,277 @@
             <h1>Teclado</h1>
             <h4>desconectado</h4>
           </div>
-          <footer class="dropbtn flex j-center">
+          <footer class="flex j-center">
             <p>RAIMONES &copy 2023</p>
           </footer>
         </div>
       </nav>
       <section class="show">
-        <img class="btn-menu pointer" src="https://icongr.am/clarity/menu.svg?size=35&color=currentColor" alt="Botão de menu">
+        <img class="btn_menu pointer" src="https://icongr.am/clarity/menu.svg?size=40&color=currentColor" alt="Botão de menu">
         <section class="content">
-          <div class="aula teclado ">
+          <div id="teclado" class="aula disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">O Teclado Musical</h2>
             </div>
             <div>Img teclado</div>
           </div>
-          <div class="aula notas disable">
+          <div id="notas" class="aula">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">As notas</h2>
             </div>
             <h1>DÓ</h1>
-            <div>Teclado musical digital</div>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button data-audio="Db">DÓ+ ou RÉ-</button>
+                  <button data-audio="Eb">RÉ+ ou MÍ-</button>
+                  <button class="none"></button>
+                  <button data-audio="Gb">FÁ+ ou SOL-</button>
+                  <button data-audio="Ab">SOL+ ou LÁ-</button>
+                  <button data-audio="Bb">LÁ+ ou SÍ-</button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button data-audio="C">DÓ</button>
+                  <button data-audio="D">RÉ</button>
+                  <button data-audio="E">MÍ</button>
+                  <button data-audio="F">FÁ</button>
+                  <button data-audio="G">SOL</button>
+                  <button data-audio="A">LÁ</button>
+                  <button data-audio="B">SÍ</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="aula grau disable">
+          <div id="grau" class="aula disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">Os graus</h2>
+              <h2 class="title">Pressione a tecla para saber o grau da escala tonal de C!</h2>
             </div>
-            <div>
-              <button>1°</button>
-              <button>2°</button>
-              <button>3°</button>
-              <button>4°</button>
-              <button>5°</button>
-              <button>6°</button>
-              <button>7°</button>
+            <h1>1°</h1>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button data-audio="Db"></button>
+                  <button data-audio="Eb"></button>
+                  <button class="none"></button>
+                  <button data-audio="Gb"></button>
+                  <button data-audio="Ab"></button>
+                  <button data-audio="Bb"></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button data-audio="C">1°</button>
+                  <button data-audio="D">2°</button>
+                  <button data-audio="E">3°</button>
+                  <button data-audio="F">4°</button>
+                  <button data-audio="G">5°</button>
+                  <button data-audio="A">6°</button>
+                  <button data-audio="B">7°</button>
+                </div>
+              </div>
+              </div>
             </div>
-            <div>Teclado musical digital</div>
           </div>
-          <div class="aula dedos disable">
+          </div>
+          <div id="dedos" class="aula disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">Os dedos e suas posições</h2>
               <p class="title">Pressione as teclas para saber que dedo deve ser usado!</p>
             </div>
             <h1>1-D</h1>
-            <div>Teclado musical digital</div>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button data-audio="C">1-E</button>
+                  <button data-audio="D">2-E</button>
+                  <button data-audio="E">3-E</button>
+                  <button data-audio="F">1-E</button>
+                  <button data-audio="G">2-E</button>
+                  <button data-audio="A">3-E</button>
+                  <button data-audio="B">4-E</button>
+                </div>
+              </div>
+              <div class="octave oct2">
+                <div class="blacks">
+                  <button data-audio="Db"></button>
+                  <button data-audio="Eb"></button>
+                  <button class="none"></button>
+                  <button data-audio="Gb"></button>
+                  <button data-audio="Ab"></button>
+                  <button data-audio="Bb"></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button data-audio="C">1-D</button>
+                  <button data-audio="D">2-D</button>
+                  <button data-audio="E">3-D</button>
+                  <button data-audio="F">1-D</button>
+                  <button data-audio="G">2-D</button>
+                  <button data-audio="A">3-D</button>
+                  <button data-audio="B">4-D</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="aula altura disable">
+          </div>
+          <div id="altura" class="aula disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">A altura ou frequência</h2>
             </div>
-            <div>Teclado musical digital</div>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button data-audio="Db"></button>
+                  <button data-audio="Eb"></button>
+                  <button class="none"></button>
+                  <button data-audio="Gb"></button>
+                  <button data-audio="Ab"></button>
+                  <button data-audio="Bb"></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button data-audio="C"></button>
+                  <button data-audio="D"></button>
+                  <button data-audio="E"></button>
+                  <button data-audio="F"></button>
+                  <button data-audio="G"></button>
+                  <button data-audio="A"></button>
+                  <button data-audio="B"></button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="aula cifra-teoria disable">
+          </div>
+          <div id="cifra-teoria" class="aula disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">Cifras</h2>
               <p>Pressione a tecla para saber sua cifra!</p>
             </div>
             <h1>C#</h1>
-            <div>Teclado musical digital</div>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button data-audio="Db">C# ou Db</button>
+                  <button data-audio="Eb">D# ou Eb</button>
+                  <button class="none"></button>
+                  <button data-audio="Gb">F# ou Gb</button>
+                  <button data-audio="Ab">G# ou Ab</button>
+                  <button data-audio="Bb"></button>A# ou Bb</button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button data-audio="C">C</button>
+                  <button data-audio="D">D</button>
+                  <button data-audio="E">E</button>
+                  <button data-audio="F">F</button>
+                  <button data-audio="G">G</button>
+                  <button data-audio="A">A</button>
+                  <button data-audio="B">B</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="aula cifra-prática disable">
+          </div>
+          <div id="cifra-pratica" class="aula disable">
             <div class="options">
               <button class="current">Nível 1</button>
               <button>Nível 2</button>
               <button>Nível 3</button>
               <button>Nível 4</button>
-              <button>Nível 5</button>
-              <button>Nível 6</button>
             </div>
-            <h2>Toque a que corresponde à cifra!</h2>
+            <h2 class="title">Toque a tecla que corresponde à cifra!</h2>
             <h1>C</h1>
-            <div>Teclado musical digital</div>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button>2</button>
+                  <button>4</button>
+                  <button class="none"></button>
+                  <button>7</button>
+                  <button>9</button>
+                  <button>11</button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button>1</button>
+                  <button>3</button>
+                  <button>5</button>
+                  <button>6</button>
+                  <button>8</button>
+                  <button>10</button>
+                  <button>12</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="aula teoria-etM disable">
+          </div>
+          <div id="teoria-etM" class="aula disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">Escala tonal Maior</h2>
               <p>T - T - s - T - T - T - s</p>
             </div>
-            <div>Teclado musical digital</div>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                </div>
+              </div>
+              <div class="octave oct2">
+                <div class="blacks">
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="aula pratica-etM disable">
+          </div>
+          <div id="pratica-etM" class="aula disable">
             <div class="options">
               <button class="current">C</button>
               <button>D</button>
@@ -172,9 +339,51 @@
             </div>
             <h1>C - </h1>
             <h2 class="title">Qual a próxima nota?</h2>
-            <div>Teclado musical digital</div>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                </div>
+              </div>
+              <div class="octave oct2">
+                <div class="blacks">
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="aula teoria-etm disable">
+          </div>
+          <div id="teoria-etm" class="aula disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">Escala tonal menor Natural</h2>
@@ -185,9 +394,51 @@
               <button>Harmônica</button>
               <button>Melódica</button>
             </div>
-            <div>Teclado musical digital</div>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                </div>
+              </div>
+              <div class="octave oct2">
+                <div class="blacks">
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="aula pratica-etm disable">
+          </div>
+          <div id="pratica-etm" class="aula disable">
             <div class="options flex column a-center">
               <div class="escala">
                 <button class="current">Natural</button>
@@ -203,12 +454,54 @@
                 <button>A</button>
                 <button>B</button>
               </div>
-              <h2>Escala tonal menor Natural de C</h2>
+              <h2 class="title">Escala tonal menor Natural de C</h2>
               <p>T - T - s - T - T - T - s</p>
             </div>
             <h1>C -</h1>
-            <h2>Qual a próxima nota?</h2>
-            <div>Teclado musical digital</div>
+            <h2 class="title">Qual a próxima nota?</h2>
+            <div class="keyboard">
+              <div class="octave">
+                <div class="blacks">
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                </div>
+              </div>
+              <div class="octave oct2">
+                <div class="blacks">
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button class="none"></button>
+                </div>
+                <div class="whites">
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                  <button></button>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
         </section>
       </section>
