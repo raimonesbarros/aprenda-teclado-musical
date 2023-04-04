@@ -16,7 +16,12 @@ document.addEventListener('click', evt=>{
 btnKeyboard.forEach(el=>{
   el.addEventListener('touchstart', evt=>{
     const event = evt.target;
-    let content = event.textContent;
+      touchKey(event)
+    })
+})
+
+function touchKey(event){
+  let content = event.textContent;
     let dataAudio = event.dataset.audio;
     
     notas.includes(content)? showContent('#notas', content, dataAudio, 3):
@@ -24,9 +29,4 @@ btnKeyboard.forEach(el=>{
     cifras.includes(content)? showContent('#cifra-teoria', content, dataAudio, 3):
     dedos1.includes(content)? showContent('#dedos', content, dataAudio, 2):
     dedos2.includes(content)? showContent('#dedos', content, dataAudio, 3): playAudio(dataAudio, 3)
-  })
-})
-
-function touchKey(){
-
 }
