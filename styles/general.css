@@ -31,6 +31,10 @@
 html, body{
   background-color: aliceblue;
   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select:none;  
+  -moz-user-select:none;     
+  -ms-user-select:none;      
+  user-select:none;
 }
 
 .container{max-width: var(--maxWidth);}
@@ -75,6 +79,7 @@ main section{
 .navbar .conection{
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 
 .dropbtn, .dropbtn2, .dropbtn3{
