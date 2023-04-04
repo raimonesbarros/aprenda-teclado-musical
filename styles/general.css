@@ -28,7 +28,10 @@
 }
 
 /* General configuration */
-html, body{background-color: aliceblue;}
+html, body{
+  background-color: aliceblue;
+  -webkit-tap-highlight-color: transparent;
+}
 
 .container{max-width: var(--maxWidth);}
 
@@ -254,8 +257,6 @@ main section{
   color: transparent;
   cursor: pointer;
 }
-
-.keyboard button:hover {background-color: #999;}
 
 .keyboard .whites{
   width: 100%;
