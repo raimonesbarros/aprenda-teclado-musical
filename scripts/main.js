@@ -14,7 +14,7 @@ document.addEventListener('click', evt=>{
 })
 
 btnKeyboard.forEach(el=>{
-  el.addEventListener('click', evt=>{
+  el.addEventListener('focus', evt=>{
     const event = evt.target;
     let content = event.textContent;
     let dataAudio = event.dataset.audio;
