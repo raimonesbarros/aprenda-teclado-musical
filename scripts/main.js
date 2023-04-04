@@ -1,4 +1,4 @@
-import { Navigate } from "./app/navigate.js"
+import { Navigate } from "./app/Navigate.js"
 import { showContent, playAudio, grau, notas, dedos1, dedos2, cifras } from "./app/Negocios.js"
 const navigate = new Navigate()
 
