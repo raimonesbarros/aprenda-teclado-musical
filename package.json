@@ -1,0 +1,20 @@
+{
+  "name": "aprenda-teclado-musical",
+  "version": "1.0.0",
+  "description": "Aplicação pessoal para aprender a tocar teclado",
+  "main": "scripts/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raimonesbarros/aprenda-teclado-musical.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raimonesbarros/aprenda-teclado-musical/issues"
+  },
+  "homepage": "https://github.com/raimonesbarros/aprenda-teclado-musical#readme",
+  "type": "module"
+}
