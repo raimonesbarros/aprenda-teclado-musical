@@ -14,7 +14,7 @@ document.addEventListener('click', evt=>{
 })
 
 btnKeyboard.forEach(el=>{
-  el.addEventListener('focus', evt=>{
+  el.addEventListener('touchstart', evt=>{
     const event = evt.target;
     let content = event.textContent;
     let dataAudio = event.dataset.audio;
@@ -26,3 +26,7 @@ btnKeyboard.forEach(el=>{
     dedos2.includes(content)? showContent('#dedos', content, dataAudio, 3): playAudio(dataAudio, 3)
   })
 })
+
+function touchKey(){
+
+}
