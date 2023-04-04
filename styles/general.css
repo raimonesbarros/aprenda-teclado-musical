@@ -69,7 +69,7 @@ main section{
 
 .navbar button{text-transform: uppercase;}
 
-.connection{
+.navbar .conection{
   position: absolute;
   bottom: 0;
 }
