@@ -66,19 +66,19 @@ main section{
 
 /* Left menu */
 .navbar{
-  position: relative;
   width: 30% !important;
   min-width: 170px;
   height: 100%;
-  overflow-y: scroll;
   animation: slide .1s forwards ease-out reverse;
+}
+
+.nav-list{
+  overflow-y: scroll;
 }
 
 .navbar button{text-transform: uppercase;}
 
 .navbar .conection{
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 
