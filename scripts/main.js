@@ -2,7 +2,6 @@ import { Navigate } from "./app/model/Navigate.js";
 import { Teclado } from "./app/model/Aulas.js";
 
 const aulas = document.querySelectorAll('.aula');
-const btnKeyboard = document.querySelectorAll('.keyboard button');
 
 aulas.forEach(el=>{
   let modelo = el.classList[1];
@@ -12,8 +11,11 @@ aulas.forEach(el=>{
   teclado.showTeclado()
 })
 
+const btnKeyboard = document.querySelectorAll('.keyboard button');
+
 document.addEventListener('click', evt=>{
-  let event = evt.target  
+  let event = evt.target
+  
   const navigate = new Navigate(event)
   navigate.btnMenu()
   navigate.aulas()
@@ -22,14 +24,7 @@ document.addEventListener('click', evt=>{
 btnKeyboard.forEach(el=>{
   el.addEventListener('click', evt=>{
     const event = evt.target;
-    console.log(event)
+    // console.log(event)
     new Teclado().touchKey(event)
   })
-  // el.addEventListener('touchmove', evt=>{
-  //   evt.target
-  //   for (let i = 0; i < evt.changedTouches.length; i++) {
-  //     const event = evt.changedTouches[i];
-  //     touchKey(event)
-  //   }
-  // })
 })
