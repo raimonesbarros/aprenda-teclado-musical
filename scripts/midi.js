@@ -24,7 +24,8 @@ function success(midiAccess){
   });
 }
 
-// Funções de eccuta
+// Funções de escuta para eventos
+
 function updateDevices(event){
   // console.log(event)
   let nome = event.port.name;; //nome do dispositivo

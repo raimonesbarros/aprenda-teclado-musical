@@ -73,13 +73,16 @@ main section{
 }
 
 .nav-list{
-  overflow-y: scroll;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .navbar button{text-transform: uppercase;}
 
 .navbar .conection{
   width: 100%;
+  box-shadow: 0 -5px 5px #cfcfcf;
+  z-index: 3;
 }
 
 .dropbtn, .dropbtn2, .dropbtn3{
@@ -109,10 +112,9 @@ main section{
 .dropdown-content3 {
   display: none;
   position: absolute;
-  top:0;
   right: 0;
   background-color: #f1f1f1;
-  min-width: 70%;
+  width: 50%;
   z-index: 1;
 }
 
@@ -178,12 +180,13 @@ main section{
 
 .btn_menu{
   position: absolute;
-  left: .3rem;
-  top: .2rem;
+  padding: .5rem;
 }
 
 /* Show */
 .show{width: 100%; position: relative;}
+
+.show .content{padding: .5rem;}
 
 .aula{
   height: 100%;
@@ -191,7 +194,6 @@ main section{
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2rem;
   text-align: center;
 }
 
@@ -261,6 +263,7 @@ main section{
   overflow: hidden;
   color: transparent;
   cursor: pointer;
+  border-top: #000 1px solid;
 }
 
 .keyboard .whites{

@@ -1,39 +1,35 @@
-import { Navigate } from "./app/Navigate.js"
-import { showContent, playAudio, grau, notas, dedos1, dedos2, cifras } from "./app/Negocios.js"
-const navigate = new Navigate()
+import { Navigate } from "./app/model/Navigate.js";
+import { Teclado } from "./app/model/Aulas.js";
 
+const aulas = document.querySelectorAll('.aula');
 const btnKeyboard = document.querySelectorAll('.keyboard button');
 
+aulas.forEach(el=>{
+  let modelo = el.classList[1];
+  let aula = el.classList[2];
+  let local = el.id;
+  const teclado = new Teclado('', modelo, aula, local)
+  teclado.showTeclado()
+})
+
 document.addEventListener('click', evt=>{
-  let event = evt.target
-  let classe = event.classList[0]
-  let data = event.dataset.aula
-  // console.log(event.dataset.aula)
-  classe=='ir'? navigate.aulas(data):
-  classe=='btn_menu'? navigate.btnMenu():''
+  let event = evt.target  
+  const navigate = new Navigate(event)
+  navigate.btnMenu()
+  navigate.aulas()
 })
 
 btnKeyboard.forEach(el=>{
   el.addEventListener('click', evt=>{
     const event = evt.target;
-    touchKey(event)
+    console.log(event)
+    new Teclado().touchKey(event)
   })
-  el.addEventListener('touchmove', evt=>{
-    evt.target
-    for (let i = 0; i < evt.changedTouches.length; i++) {
-      const event = evt.changedTouches[i];
-      touchKey(event)
-    }
-  })
+  // el.addEventListener('touchmove', evt=>{
+  //   evt.target
+  //   for (let i = 0; i < evt.changedTouches.length; i++) {
+  //     const event = evt.changedTouches[i];
+  //     touchKey(event)
+  //   }
+  // })
 })
-
-function touchKey(event){
-  let content = event.textContent;
-  let dataAudio = event.dataset.audio;
-    
-  notas.includes(content)? showContent('#notas', content, dataAudio, 3):
-  grau.includes(content)? showContent('#grau', content, dataAudio, 3):
-  cifras.includes(content)? showContent('#cifra-teoria', content, dataAudio, 3):
-  dedos1.includes(content)? showContent('#dedos', content, dataAudio, 2):
-  dedos2.includes(content)? showContent('#dedos', content, dataAudio, 3): playAudio(dataAudio, 3)
-}
