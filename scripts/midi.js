@@ -20,7 +20,7 @@ function success(midiAccess){
   
   inputs.forEach(input => {
     // console.log(input)
-    input.addEventListener('midimessage', handleInput);
+    input.addEventListener('midimessage', updateKeys);
   });
 }
 
@@ -42,7 +42,7 @@ function updateDevices(event){
 let data = [];
 
 // Pegar informações das teclas
-function handleInput(input){
+function updateKeys(input){
   const comando = input.data[0]; // 144 tocou | 128 soltou
   const nota    = input.data[1]; // Valor da nota que foi tocada
   const forca   = input.data[2]; // Força com que a nota foi tocada

@@ -1,38 +1,17 @@
-
-const aulas = {
-  notas: [
-    ['DÓ+ ou RÉ-', 'RÉ+ ou MÍ-', ' ', 'FÁ+ ou SOL-', 'SOL+ ou LÁ-', 'LÁ+ ou SÍ-'],
-    ['DÓ', 'RÉ', 'MÍ', 'FÁ', 'SOL', 'LÁ', 'SÍ']
-  ],
-
-  dedos: [
-    ['1-E', '2-E', '3-E', '4-E', '5-E', '3-E', '4-E'],
-    ['5-E ou 1-D', '2-D', '3-D', '1-D', '2-D', '3-D', '4-D']
-  ],
-
-  cifras: [
-    ['C# ou Db', 'D# ou Eb', ' ', 'F# ou Gb', 'G# ou Ab', 'A# ou Bb', ' '],
-    ['C', 'D', 'E', 'F', 'G', 'A', 'B']
-  ],
-
-  grau: [
-    [],
-    ['1°', '2°', '3°', '4°', '5°', '6°', '7°']
-  ]
-}
+import { aulas } from "../../aulas.js";
+export { TecladoVirtual, TecladoFisico }
 
 const audio = {
   bemois: ['Db', 'Eb', 'none', 'Gb', 'Ab', 'Bb', 'none'],
   naturais: ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 };
 
-
-export class Teclado{
+class TecladoVirtual{
   constructor(event, modelo, aula, local){
-    this.event = event || null;
-    this.local = document.querySelector(`#${local} .keyboard`) || null;
-    this.aula = aula || null;
+    this.event  = event  || null;
+    this.aula   = aula   || null;
     this.modelo = modelo || null;
+    this.local  = document.querySelector(`#${local} .keyboard`) || null;
   }
 
   showTeclado(){
@@ -45,10 +24,9 @@ export class Teclado{
     }
   }
 
-  touchKey(event){
-    // let content = event.textContent;
-    let dataAudio = event.dataset.audio;
-    playAudio(dataAudio);
+  playAudio(dataAudio){
+    let audio = new Audio(`audio/piano-mp3/${dataAudio}.mp3`);
+    audio.play()
   }
 
   createOctave(textContent, numOctave){
@@ -88,8 +66,33 @@ export class Teclado{
   }
 }
 
-//Audio Piano
-function playAudio(dataAudio){
-  let audio = new Audio(`audio/piano-mp3/${dataAudio}.mp3`);
-  audio.play()
+let chord = [];
+class TecladoFisico{
+  constructor(comando, nota, forca){
+    this.comando = comando || null;
+    this.nota = nota || null;
+    this.forca = forca || null;
+    this.allKeys = [];
+  }
+  
+  noteTouched(){
+    this.arrNotes()
+    let note = this.allKeys[this.nota];
+    if(this.comando==144){
+      chord.push(note);
+      console.log(chord)
+    } else if(this.comando==128){
+      chord = chord.filter(el=>el!=note);
+      console.log(chord)
+    }
+  }
+
+  arrNotes(){
+    let notes = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+
+    for(let i=0; i<=10; i++){
+      this.allKeys.push(...notes)
+    }
+  }
+
 }
