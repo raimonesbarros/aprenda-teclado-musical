@@ -15,8 +15,14 @@
       <nav class="navbar flex column between disable">
         <ul class="nav-list">
           <li><button data-aula="teclado" class="ir dropbtn pointer">O teclado</button></li>
-          <li><button  data-aula="notas" class="ir dropbtn pointer">As notas</button></li>
-          <li><button data-aula="dedos" class="ir dropbtn pointer">Os dedos</button></li>
+          <li class="dropdown">
+            <button class="dropbtn">As notas</button>
+            <ul class="dropdown-content">
+              <li data-aula="notas-teoria" class="ir pointer">Teoria</li>
+              <li data-aula="notas-pratica" class="ir pointer">Prática</li>
+            </ul>
+          </li>
+          <li><button data-aula="dedos-teoria" class="ir dropbtn pointer">Os dedos</button></li>
           <li><button data-aula="altura" class="ir dropbtn pointer">A altura</button></li>
           <li class="dropdown">
             <button class="dropbtn">As Cifras</button>
@@ -44,7 +50,7 @@
               </li>
             </ul>
           </li>
-          <li><button data-aula="grau" class="ir dropbtn pointer">Os graus</button></li>
+          <li><button data-aula="grau-teoria" class="ir dropbtn pointer">Os graus</button></li>
           <li><button class="dropbtn pointer">Próxima</button></li>
         </ul>
         <div class="conection flex column between a-center">
@@ -61,24 +67,32 @@
       <section class="show">
         <img class="btn_menu pointer" src="https://icongr.am/clarity/menu.svg?size=50&color=currentColor" alt="Botão de menu">
         <section class="content">
-          <div id="teclado" class="aula ">
+          <div id="teclado" class="aula disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">O Teclado Musical</h2>
             </div>
             <div>Img teclado</div>
-          </div>
-          <div id="notas" class="aula tm1 notas disable">
+          </div>       
+          <div id="notas-teoria" class="aula tm1 notas ">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">As notas</h2>
+              <h2 class="title">Pressione a tecla para saber a nota!</p>
             </div>
             <h1></h1>
             <div class="keyboard">
               <!-- Teclado -->
             </div>
           </div>
-          <div id="dedos" class="aula dedos disable">
+          <div id="notas-pratica" class="aula tm1 notas disable">
+            <h2 class="title">Pressione a tecla que corresponde a nota abaixo!</h2>
+            <h1>DÓ</h1>
+            <div class="keyboard">
+              <!-- Teclado -->
+            </div>
+          </div>
+          <div id="dedos-teoria" class="aula dedos disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">Os dedos e suas posições</h2>
@@ -237,11 +251,11 @@
               <!-- Teclado -->
             </div>
           </div>
-          <div id="grau" class="aula tm1 grau disable">
+          <div id="grau-teoria" class="aula tm1 grau disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">Os graus</h2>
-              <h2 class="title">Pressione a tecla para saber o grau da escala tonal de C!</h2>
+              <h2 class="title">Pressione a tecla para saber o grau da escala tonal maior de C!</h2>
             </div>
             <h1></h1>
             <div class="keyboard">

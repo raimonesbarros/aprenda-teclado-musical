@@ -23,4 +23,27 @@ export const aulas = {
   ]
 }
 
-/* NOTAS */
+export class Aulas{
+  constructor(){
+    this.random = 0;
+  }
+
+  showNote(event){
+    let content = event.innerText;
+    let parent = event.parentNode.parentNode.parentNode.parentNode.id;
+    this.showSimple(content, parent)
+  }
+
+  showSimple(content, parent){
+    let tipo = parent.slice(-6);
+    let local = document.querySelector(`#${parent} h1`)
+    tipo=='teoria'? local.innerHTML = content:''
+  }
+
+  randomize(arr){
+    this.random = Math.floor(Math.random()*arr.length)
+
+  }
+
+
+}

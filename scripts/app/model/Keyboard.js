@@ -1,5 +1,6 @@
 import { aulas } from "../../aulas.js";
-export { TecladoVirtual, TecladoFisico }
+export { TecladoVirtual, TecladoFisico };
+import { Aulas } from "../../aulas.js";
 
 const audio = {
   bemois: ['Db', 'Eb', 'none', 'Gb', 'Ab', 'Bb', 'none'],
@@ -7,14 +8,16 @@ const audio = {
 };
 
 class TecladoVirtual{
-  constructor(event, modelo, aula, local){
-    this.event  = event  || null;
-    this.aula   = aula   || null;
-    this.modelo = modelo || null;
-    this.local  = document.querySelector(`#${local} .keyboard`) || null;
+  constructor(){
+    this.modelo = '';
+    this.aula = '';
+    this.local = '';
   }
 
-  showTeclado(){
+  showTeclado(modelo, aula, local){
+    this.aula   = aula;
+    this.modelo = modelo;
+    this.local  = document.querySelector(`#${local} .keyboard`);
     if(this.modelo=='tm1' && aulas[this.aula]){
       this.createOctave(this.aula)
     }
@@ -24,7 +27,12 @@ class TecladoVirtual{
     }
   }
 
-  playAudio(dataAudio){
+  touchKey(event){
+    this.playAudio(event)
+  }
+
+  playAudio(event){
+    let dataAudio = event.dataset.audio;
     let audio = new Audio(`audio/piano-mp3/${dataAudio}.mp3`);
     audio.play()
   }
