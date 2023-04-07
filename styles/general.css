@@ -6,8 +6,8 @@
   to{transform: translate(-50%);}
 }
 @keyframes error {
-  33.3%{transform: translate(-10px);}
-  66.6%{transform: translate(10px);}
+  33.3%{transform: translate(-5px);}
+  66.6%{transform: translate(5px);}
 }
 
 *{
@@ -186,7 +186,7 @@ main section{
 /* Show */
 .show{width: 100%; position: relative;}
 
-.show .content{padding: .5rem;}
+.show .content{padding: 3rem .3rem  .5rem;}
 
 .aula{
   height: 100%;

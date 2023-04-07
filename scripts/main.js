@@ -1,10 +1,10 @@
 import { DOM } from "./requestDOM.js";
 import { Navigate } from "./app/model/Navigate.js";
 import { TecladoVirtual, TecladoFisico } from "./app/model/Keyboard.js";
-import { Aulas } from "./aulas.js";
+import { Aulas } from "./app/model/Aulas.js"; 
 
-let class_aulas = new Aulas()
-let teclado_virtual = new TecladoVirtual()
+let class_aulas = new Aulas();
+let teclado_virtual = new TecladoVirtual();
 
 /* TECLADO FISICO */
 
@@ -74,9 +74,9 @@ aulas.forEach(el=>{
 const btnKeyboard = document.querySelectorAll('.keyboard button');
 btnKeyboard.forEach(el=>{
   el.addEventListener('click', evt=>{
+    teclado_virtual.playAudio(evt.target);
     const event = evt.target;
     class_aulas.showNote(event)
-    teclado_virtual.touchKey(event);
   })
 })
 

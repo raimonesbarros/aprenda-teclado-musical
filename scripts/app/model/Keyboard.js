@@ -1,6 +1,5 @@
-import { aulas } from "../../aulas.js";
 export { TecladoVirtual, TecladoFisico };
-import { Aulas } from "../../aulas.js";
+import { aulas } from "./Aulas.js"; 
 
 const audio = {
   bemois: ['Db', 'Eb', 'none', 'Gb', 'Ab', 'Bb', 'none'],
@@ -25,10 +24,6 @@ class TecladoVirtual{
       this.createOctave(this.aula, 2)
       this.createOctave(this.aula)
     }
-  }
-
-  touchKey(event){
-    this.playAudio(event)
   }
 
   playAudio(event){
@@ -60,12 +55,8 @@ class TecladoVirtual{
     for (let i=0;i<audio.naturais.length;i++) {
       const el = audio.naturais[i];
       let button = document.createElement('button');
-      if(el=='none'){
-        button.setAttribute('class', 'none') 
-      } else{
-        button.innerText = aulas[textContent][1][i];
-        button.setAttribute('data-audio', el+numOctave);
-      }
+      button.innerText = aulas[textContent][0][i+6];
+      button.setAttribute('data-audio', el+numOctave);
       whites.appendChild(button);
     }
     octave.appendChild(whites);
