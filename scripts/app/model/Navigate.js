@@ -24,4 +24,5 @@ export class Navigate{
       item.classList.remove('disable')
     }
   }
+
 }

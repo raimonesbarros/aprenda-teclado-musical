@@ -1,5 +1,21 @@
 export { TecladoVirtual, TecladoFisico };
-import { aulas } from "./Aulas.js"; 
+
+let modelKeyboard = {
+  notas: ['DÓ+ ou RÉ-', 'RÉ+ ou MÍ-', ' ', 'FÁ+ ou SOL-', 'SOL+ ou LÁ-', 'LÁ+ ou SÍ-', 'DÓ', 'RÉ', 'MÍ', 'FÁ', 'SOL', 'LÁ', 'SÍ'],
+
+  dedos: [
+    ['', '', '', '', '', '', '1-E', '2-E', '3-E', '4-E', '5-E', '3-E', '4-E'],
+    ['', '', '', '', '', '', '5-E ou 1-D', '2-D', '3-D', '1-D', '2-D', '3-D', '4-D']
+  ],
+
+  cifra: [
+    ['C# ou Db', 'D# ou Eb', ' ', 'F# ou Gb', 'G# ou Ab', 'A# ou Bb', 'C', 'D', 'E', 'F', 'G', 'A', 'B'],
+  ],
+
+  padrao: ['C# ou Db', 'D# ou Eb', ' ', 'F# ou Gb', 'G# ou Ab', 'A# ou Bb', 'C', 'D', 'E', 'F', 'G', 'A', 'B'],
+
+  grau: ['', '', '', '', '', '', '', '1°', '2°', '3°', '4°', '5°', '6°', '7°']
+}
 
 const audio = {
   bemois: ['Db', 'Eb', 'none', 'Gb', 'Ab', 'Bb', 'none'],
@@ -8,32 +24,36 @@ const audio = {
 
 class TecladoVirtual{
   constructor(){
-    this.modelo = '';
+    this.modelKeyboardo = '';
     this.aula = '';
     this.local = '';
   }
 
-  showTeclado(modelo, aula, local){
+  showTeclado(modelKeyboardo, aula, local){
+    this.modelKeyboardo = modelKeyboardo;
     this.aula   = aula;
-    this.modelo = modelo;
     this.local  = document.querySelector(`#${local} .keyboard`);
-    if(this.modelo=='tm1' && aulas[this.aula]){
-      this.createOctave(this.aula)
+    if(this.modelKeyboardo=='tm1' && modelKeyboard[this.aula]){
+      this.createOctave(modelKeyboard[this.aula], 3)
     }
-    if(this.modelo=='tm2' && aulas[this.aula]){
-      this.createOctave(this.aula, 2)
-      this.createOctave(this.aula)
+    if(this.modelKeyboardo=='tm2' && modelKeyboard[this.aula]){
+      this.createOctave(modelKeyboard[this.aula], 2)
+      this.createOctave(modelKeyboard[this.aula], 3)
+    }
+    if(this.modelKeyboardo=='tm3' && modelKeyboard[this.aula]){
+      this.createOctave(modelKeyboard[this.aula][0], 2)
+      this.createOctave(modelKeyboard[this.aula][1], 3)
     }
   }
 
   playAudio(event){
     let dataAudio = event.dataset.audio;
-    let audio = new Audio(`audio/piano-mp3/${dataAudio}.mp3`);
+    let audio = new Audio(`audio/${dataAudio}.mp3`);
     audio.play()
   }
 
-  createOctave(textContent, numOctave){
-    textContent = textContent || null;
+  createOctave(arrModelKeyboard, numOctave){
+    arrModelKeyboard = arrModelKeyboard || null;
     numOctave = numOctave || 3;
     let octave = document.createElement('div');
     let blacks = document.createElement('div');
@@ -47,7 +67,7 @@ class TecladoVirtual{
       if(el=='none'){
         button.setAttribute('class', 'none') 
       } else{
-        button.innerText = aulas[textContent][0][i];
+        button.innerText = arrModelKeyboard[i];
         button.setAttribute('data-audio', el+numOctave);
       }
       blacks.appendChild(button);
@@ -55,7 +75,7 @@ class TecladoVirtual{
     for (let i=0;i<audio.naturais.length;i++) {
       const el = audio.naturais[i];
       let button = document.createElement('button');
-      button.innerText = aulas[textContent][0][i+6];
+      button.innerText = arrModelKeyboard[i+6];
       button.setAttribute('data-audio', el+numOctave);
       whites.appendChild(button);
     }
@@ -64,6 +84,7 @@ class TecladoVirtual{
     this.local.appendChild(octave);
   }
 }
+
 
 let chord = [];
 class TecladoFisico{

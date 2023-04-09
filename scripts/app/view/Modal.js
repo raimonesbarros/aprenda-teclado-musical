@@ -1,0 +1,1 @@
+// Criar janelas modais e pop-ups com mesagens, avisos, propaganda

@@ -8,13 +8,19 @@
   <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="styles/general.css">
   <script type="module" src="scripts/main.js" defer></script>
-  <!-- <script type="module" src="scripts/midi.js" defer></script> -->
 </head>
 <body>
   <main>
     <section class="container flex">
       <nav class="navbar flex column between disable">
+        <li data-aula="perfil" class="ir dropbtn perfil pointer flex column a-center">
+          <img class="icon" src="https://icongr.am/feather/user.svg?size=40&color=000000" alt="icone de usuário">
+          <img class="disable icon" src="https://icongr.am/feather/user.svg?size=40&color=ffffff" alt="icone de usuário">
+          <h1>@<span>userName</span></h1>
+        </li>
         <ul class="nav-list">
+          <li><button data-aula="apresentacao" class="ir dropbtn pointer">O Curso</button></li>
+          <li><button data-aula="membro" class="ir dropbtn pointer">Membros</button></li>
           <li><button data-aula="teclado" class="ir dropbtn pointer">O teclado</button></li>
           <li class="dropdown">
             <button class="dropbtn">As notas</button>
@@ -55,18 +61,23 @@
           <li><button class="dropbtn pointer">Próxima</button></li>
         </ul>
         <div class="conection flex column between a-center">
-          <p>Conexão MIDI</p>
-          <div class="flex column a-center">
+          <div class="flex column a-center info">
+            <p>Conexão MIDI</p>
             <h1>Teclado</h1>
             <h4>desconectado</h4>
           </div>
-          <footer class="flex j-center">
-            <p>RAIMONES &copy 2023</p>
+          <footer class="flex around">
+            <img class="mode icon disable" src="https://icongr.am/feather/sun.svg?size=30&color=ffffff" alt="modo claro">
+            <img class="mode icon" src="https://icongr.am/feather/moon.svg?size=30&color=currentColor" alt="modo escuro">
+            <img class="dot-connect" src="https://icongr.am/octicons/dot-fill.svg?size=30&color=777777" alt="conexao midi">
+            <img class="icon" src="https://icongr.am/clarity/help.svg?size=30&color=000000" alt="dúvidas">
+            <img class="icon disable" src="https://icongr.am/clarity/help.svg?size=30&color=ffffff" alt="dúvidas">
           </footer>
         </div>
       </nav>
       <section class="show">
-        <img class="btn_menu pointer" src="https://icongr.am/clarity/menu.svg?size=50&color=currentColor" alt="Botão de menu">
+        <img class="btn_menu icon pointer" src="https://icongr.am/clarity/menu.svg?size=50&color=000000" alt="Botão de menu">
+        <img class="btn_menu icon pointer disable" src="https://icongr.am/clarity/menu.svg?size=50&color=ffffff" alt="Botão de menu">
         <section class="content">
           <div id="teclado" class="aula disable">
             <div class="video">
@@ -75,7 +86,7 @@
             </div>
             <div>Img teclado</div>
           </div>       
-          <div id="notas-teoria" class="aula tm1 notas">
+          <div id="notas-teoria" class="aula tm1 notas disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">As notas</h2>
@@ -86,14 +97,14 @@
               <!-- Teclado -->
             </div>
           </div>
-          <div id="notas-pratica" class="aula tm1 notas disable">
+          <div id="notas-pratica" class="aula tm1 notas">
             <h2 class="title">Pressione a tecla que corresponde a nota abaixo!</h2>
             <h1>DÓ</h1>
             <div class="keyboard">
               <!-- Teclado -->
             </div>
           </div>
-          <div id="dedos-teoria" class="aula dedos disable">
+          <div id="dedos-teoria" class="aula tm3 dedos disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">Os dedos e suas posições</h2>
@@ -101,50 +112,10 @@
             </div>
             <h1></h1>
             <div class="keyboard">
-              <div class="octave">
-                <div class="blacks">
-                  <button data-audio="Db2"></button>
-                  <button data-audio="Eb2"></button>
-                  <button class="none"></button>
-                  <button data-audio="Gb2"></button>
-                  <button data-audio="Ab2"></button>
-                  <button data-audio="Bb2"></button>
-                  <button class="none"></button>
-                </div>
-                <div class="whites">
-                  <button data-audio="C2">1-E</button>
-                  <button data-audio="D2">2-E</button>
-                  <button data-audio="E2">3-E</button>
-                  <button data-audio="F2">4-E</button>
-                  <button data-audio="G2">5-E</button>
-                  <button data-audio="A2">3-E</button>
-                  <button data-audio="B2">4-E</button>
-                </div>
-              </div>
-              <div class="octave oct2">
-                <div class="blacks">
-                  <button data-audio="Db3"></button>
-                  <button data-audio="Eb3"></button>
-                  <button class="none"></button>
-                  <button data-audio="Gb3"></button>
-                  <button data-audio="Ab3"></button>
-                  <button data-audio="Bb3"></button>
-                  <button class="none"></button>
-                </div>
-                <div class="whites">
-                  <button data-audio="C3">5-E ou 1-D</button>
-                  <button data-audio="D3">2-D</button>
-                  <button data-audio="E3">3-D</button>
-                  <button data-audio="F3">1-D</button>
-                  <button data-audio="G3">2-D</button>
-                  <button data-audio="A3">3-D</button>
-                  <button data-audio="B3">4-D</button>
-                </div>
-              </div>
+              <!-- Teclado -->
             </div>
           </div>
-          </div>
-          <div id="altura" class="aula tm1 grau disable">
+          <div id="altura" class="aula tm1 padrao disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">A altura ou frequência</h2>
@@ -152,7 +123,6 @@
             <div class="keyboard">
               <!-- Teclado -->
             </div>
-          </div>
           </div>
           <div id="cifra-teoria" class="aula tm1 cifra disable">
             <div class="video">
@@ -164,7 +134,6 @@
             <div class="keyboard">
               <!-- Teclado -->
             </div>
-          </div>
           </div>
           <div id="cifra-pratica" class="aula tm1 cifra disable">
             <div class="options">
@@ -179,7 +148,6 @@
               <!-- Teclado -->
             </div>
           </div>
-          </div>
           <div id="teoria-etM" class="aula tm2 cifra disable">
             <div class="video">
               <video src="">Video</video>
@@ -189,7 +157,6 @@
             <div class="keyboard">
               <!-- Teclado -->
             </div>
-          </div>
           </div>
           <div id="pratica-etM" class="aula tm2 cifra disable">
             <div class="options">
@@ -210,7 +177,6 @@
             <div class="keyboard">
               <!-- Teclado -->
             </div>
-          </div>
           </div>
           <div id="teoria-etm" class="aula tm2 cifra disable">
             <div class="video">
@@ -262,8 +228,6 @@
             <div class="keyboard">
               <!-- Teclado -->
             </div>
-          </div>
-          </div>
           </div>
         </section>
       </section>
