@@ -25,4 +25,13 @@ export class Navigate{
     }
   }
 
+  conection(){
+    const info = document.querySelector('.info')
+    if(this.classe=='dot-connect'){
+      info.classList.toggle('disable');
+    } else{
+      info.classList.add('disable');
+    }
+  }
+
 }

@@ -29,7 +29,7 @@
 
 /* General configuration */
 html, body{
-  background-color: var(--colorLigth);
+  background-color: #fff;
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select:none;  
   -moz-user-select:none;     
@@ -79,7 +79,7 @@ main section{
 .nav-list{
   overflow-y: auto;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
 }
 
 .navbar button{text-transform: uppercase;}
@@ -95,8 +95,8 @@ main section{
 }
 
 .perfil{
-  color: #333;
-  border-radius: 10px;
+  color: #111;
+  border-radius: 0 0 10px 10px;
   margin-bottom: .2rem;
 }
 
@@ -173,8 +173,6 @@ main section{
   box-shadow: 0 -5px 5px #5252521e;
   z-index: 3;
 }
-
-.info{display: none;}
 
 .conection p, h1, h4{ padding-top: .2rem;}
 

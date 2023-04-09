@@ -11,6 +11,7 @@ export class controllerNavigate{
     const navigate = new Navigate(event)
     navigate.btnMenu()
     navigate.aulas()
+    navigate.conection()
   }
   
   modeToggle(element){this.mode.toggle(element);}
