@@ -71,7 +71,7 @@ onTouchLeave('button', element=> controller_keyboard.touchMove(element));
 // Tocar 
 const btnKeyboard = document.querySelectorAll('.keyboard button');
 btnKeyboard.forEach(tecla=>{
-  tecla.addEventListener('click', evt=>{ controller_keyboard.touchStart(evt);});
+  tecla.addEventListener('mousedown', evt=>{ controller_keyboard.touchStart(evt);});
 })
 
 // Eventos de navegação
