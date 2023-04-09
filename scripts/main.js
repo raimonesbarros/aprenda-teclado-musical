@@ -65,7 +65,7 @@ document.addEventListener('touchmove', e=>{
 
 });
 
-onTouchEnter('button', element=> controller_keyboard.touchMove(element));
+onTouchEnter('.keyboard button', element=> controller_keyboard.touchMove(element));
 
 // Tocar 
 const btnKeyboard = document.querySelectorAll('.keyboard button');
