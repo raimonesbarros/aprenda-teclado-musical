@@ -1,11 +1,11 @@
 export class Navigate{
   constructor(event){
-    this.event = event;
+    this.event = event || null;
     this.menu = document.querySelector('.navbar');
     this.arrPai = ['whites', 'blacks', 'octave', 'keyboard', 'aula', 'content'];
-    this.classe = event.classList[0]
-    this.classePai = event.parentNode.classList[0]
-    this.data = event.dataset.aula;
+    event? this.classe = event.classList[0]:'';
+    event? this.classePai = event.parentNode.classList[0]:'';
+    event? this.data = event.dataset.aula:'';
   }
 
   btnMenu(){
@@ -16,13 +16,17 @@ export class Navigate{
     }
   }
   
-  aulas(){
+  aulas(dataAula){
     if(this.classe=='ir'){
-      const aula = document.querySelectorAll('.aula')
-      const item = document.querySelector(`#${this.data}`)
-      aula.forEach(el=>el.classList.add('disable'))
-      item.classList.remove('disable')
+      this.irPara(dataAula)
     }
+  }
+
+  irPara(dataAula){
+    const aula = document.querySelectorAll('.aula')
+    const item = document.querySelector(`#${dataAula}`)
+    aula.forEach(el=>el.classList.add('disable'))
+    item.classList.remove('disable')
   }
 
   conection(){

@@ -5,9 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Read Keyboard Musical</title>
-  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="styles/general.css">
-  <script type="module" src="scripts/main.js" defer></script>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 </head>
 <body>
   <main>
@@ -63,14 +62,15 @@
         <div class="conection flex column between a-center">
           <div class="flex column a-center info disable">
             <p>Conexão MIDI</p>
-            <h1>Teclado</h1>
-            <p>desconectado</p>
+            <h1 class="device">Teclado</h1>
+            <p class="state">desconectado</p>
           </div>
-          <footer class="flex around">
-            <img class="mode icon pointer disable" src="https://icongr.am/feather/sun.svg?size=30&color=ffffff" alt="modo claro">
-            <img class="mode icon pointer" src="https://icongr.am/feather/moon.svg?size=30&color=currentColor" alt="modo escuro">
-            <img class="dot-connect pointer" src="https://icongr.am/octicons/dot-fill.svg?size=30&color=777777" alt="conexao midi">
-            <img class="dot-connect pointer disable" src="https://icongr.am/octicons/dot-fill.svg?size=30&color=04c27c" alt="conexao midi">
+          <footer class="flex around a-center">
+            <img class="light mode icon pointer disable" src="https://icongr.am/feather/sun.svg?size=30&color=ffffff" alt="modo claro">
+            <img class="dark mode icon pointer" src="https://icongr.am/feather/moon.svg?size=30&color=000000" alt="modo escuro">
+            <div class="dot-connect pointer flex j-center a-center">
+              <img class="dot-connect pointer flex j-center a-center dot disable" src="https://icongr.am/octicons/dot-fill.svg?size=30&color=04c27c" alt="conexao midi">
+            </div>
             <img class="icon pointer" src="https://icongr.am/clarity/help.svg?size=30&color=000000" alt="dúvidas">
             <img class="icon disable pointer" src="https://icongr.am/clarity/help.svg?size=30&color=ffffff" alt="dúvidas">
           </footer>
@@ -234,5 +234,18 @@
       </section>
     </section>
   </main>
+
+  <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="scripts/app/controller/ControllerKeyboard.js"></script>
+  <script type="module" src="scripts/app/controller/ControllerNavigate.js"></script>
+  <script type="module" src="scripts/app/controller/Repository.js"></script>
+  <script type="module" src="scripts/app/model/Keyboard.js"></script>
+  <script type="module" src="scripts/app/model/Midi.js"></script>
+  <script type="module" src="scripts/app/model/Mode.js"></script>
+  <script type="module" src="scripts/app/model/Navigate.js"></script>
+  <script type="module" src="scripts/app/model/Aulas.js"></script>
+  <!-- <script type="module" src="scripts/app/model/Person.js"></script>
+  <script type="module" src="scripts/app/view/Modal.js"></script>
+  <script type="module" src="scripts/app/view/Progress.js"></script> -->
 </body>
 </html>

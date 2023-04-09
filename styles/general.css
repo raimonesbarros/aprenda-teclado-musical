@@ -174,7 +174,14 @@ main section{
   z-index: 3;
 }
 
-.conection p, h1, h4{ padding-top: .2rem;}
+.conection p, h1{ padding-top: .2rem;}
+
+.conection .dot-connect:not(.dot-connect img){
+  width: 15px;
+  height: 15px;
+  background-color: #777;
+  border-radius: 100px;
+}
 
 .navbar footer{
   width: 100%;
@@ -284,6 +291,8 @@ main section{
   border-radius: 0 0 15% 15%;
   border-top: #000 2px solid;
 }
+
+.keyOn{background-color: #a0ffa0 !important;}
 
 .keyboard .blacks .none{
   visibility: collapse;

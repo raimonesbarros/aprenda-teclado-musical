@@ -83,6 +83,7 @@ class TecladoVirtual{
     octave.appendChild(blacks);
     this.local.appendChild(octave);
   }
+  
 }
 
 
@@ -96,20 +97,18 @@ class TecladoFisico{
   }
   
   noteTouched(){
-    this.arrNotes()
+    this.createArrNotes()
     let note = this.allKeys[this.nota];
     if(this.comando==144){
       chord.push(note);
-      console.log(chord)
     } else if(this.comando==128){
       chord = chord.filter(el=>el!=note);
-      console.log(chord)
     }
+    console.log(chord)
   }
 
-  arrNotes(){
+  createArrNotes(){
     let notes = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
-
     for(let i=0; i<=10; i++){
       this.allKeys.push(...notes)
     }

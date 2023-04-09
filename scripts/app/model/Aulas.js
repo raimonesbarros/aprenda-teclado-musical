@@ -1,5 +1,3 @@
-export { Aulas } 
-
 const modelAulas = {
   notas: [ 'DÓ+ ou RÉ-', 'RÉ+ ou MÍ-', 'FÁ+ ou SOL-', 'SOL+ ou LÁ-', 'LÁ+ ou SÍ-', 'DÓ', 'RÉ', 'MÍ', 'FÁ', 'SOL', 'LÁ', 'SÍ'],
 
@@ -13,7 +11,7 @@ const modelAulas = {
   grau: ['', '', '', '', '', '', '', '1°', '2°', '3°', '4°', '5°', '6°', '7°'],
 }
 
-class Aulas{
+export class Aulas{
   constructor(){
     this.random = 0;
   }
