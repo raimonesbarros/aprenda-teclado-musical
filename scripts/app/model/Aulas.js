@@ -16,9 +16,7 @@ export class Aulas{
     this.random = 0;
   }
 
-  showNote(event){
-    let content = event.innerText;
-    let parent = event.parentNode.parentNode.parentNode.parentNode.id;
+  showNote(content, parent){
     this.showSimple(content, parent)
     this.notesPratic(content, parent)
   }

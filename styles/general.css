@@ -292,6 +292,11 @@ main section{
   border-top: #000 2px solid;
 }
 
+.keyboard .whites button{
+  border-radius: 0 0 4px 4px;
+  border-color: #777;
+}
+
 .keyOn{background-color: #a0ffa0 !important;}
 
 .keyboard .blacks .none{

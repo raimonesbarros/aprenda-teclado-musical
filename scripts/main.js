@@ -19,12 +19,6 @@ if(navigator.requestMIDIAccess){
 
 /* TECLADO VIRTUAL */
 
-// Mostrar teclado virtual
-const aulas = document.querySelectorAll('.aula');
-aulas.forEach(element=>{
-  controller_keyboard.createKeyboardVirtual(element)
-})
-
 // Arrastar dedo no teclado
 let onTouchLeaveEvents = [];
 let onTouchEnterEvents = [];
@@ -65,12 +59,23 @@ document.addEventListener('touchmove', e=>{
 
 });
 
-onTouchEnter('.keyboard button', element=> controller_keyboard.touchMove(element));
+onTouchEnter('.keyboard button', element=>{
+  let content = element.innerText;
+  let parent = element.parentNode.parentNode.parentNode.parentNode.id;
+  let dataAudio = element.dataset.audio
+  controller_keyboard.touchMove(element, content, parent, dataAudio);
+});
 
 // Tocar 
 const btnKeyboard = document.querySelectorAll('.keyboard button');
 btnKeyboard.forEach(tecla=>{
-  tecla.addEventListener('mousedown', evt=>{controller_keyboard.touchMove(evt.target);});
+  tecla.addEventListener('mousedown', element=>{
+    let el = element.target;
+    let content = el.innerText;
+    let parent = el.parentNode.parentNode.parentNode.parentNode.id;
+    let dataAudio = el.dataset.audio
+    controller_keyboard.touchMove(el, content, parent, dataAudio);
+  });
   tecla.addEventListener('mouseleave', ()=>{controller_keyboard.touchEnd();});
   tecla.addEventListener('mouseup', ()=>{controller_keyboard.touchEnd();});
   tecla.addEventListener('touchstart', evt=>{evt.target.classList.add('keyOn');});

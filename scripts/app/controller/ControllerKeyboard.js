@@ -1,12 +1,17 @@
 import { Midi } from "../model/Midi.js";
 import { TecladoVirtual, TecladoFisico } from "../model/Keyboard.js";
 import { Aulas } from "../model/Aulas.js";
+import { Repository } from "./Repository.js";
+import { key } from "../model/Keyboard.js";
+
 
 export class ControllerKeyboard{
   constructor(){
     this.midi = new Midi();
     this.teclado_virtual = new TecladoVirtual();
+    this.teclado_fisico = new TecladoFisico();
     this.aulas = new Aulas();
+    this.repository = new Repository();
   }
 
   createKeyboardVirtual(element){
@@ -16,18 +21,18 @@ export class ControllerKeyboard{
     this.teclado_virtual.showTeclado(modelo, aula, local)
   }
 
-  touchMove(element){
+  touchMove(element, content, parent, dataAudio){
     this.touchEnd()
     element.classList.add('keyOn');
-    this.teclado_virtual.playAudio(element)
-    this.aulas.showNote(element);
+    this.teclado_virtual.playAudio(dataAudio)
+    this.aulas.showNote(content, parent);
   }
 
-  touchStart(element){
-    this.teclado_virtual.playAudio(element)
-    this.aulas.showNote(element);
-    element.classList.add('keyOn')
-  }
+  // touchStart(element){
+  //   this.teclado_virtual.playAudio(element)
+  //   this.aulas.showNote(element);
+  //   element.classList.add('keyOn')
+  // }
 
   touchEnd(){
     let buttons = document.querySelectorAll('.keyboard button');
@@ -41,8 +46,19 @@ export class ControllerKeyboard{
 
     const inputs = midiAccess.inputs;
     inputs.forEach(input => {
-      input.addEventListener('midimessage', input=> this.midi.updateKeys(input));
+      input.addEventListener('midimessage', input=> {
+        this.midi.updateKeys(input)
+        this.repository.getRepo('_info')
+        let parent = this.repository.objLocal[0].aula;
+        this.aulas.showNote(key, parent);
+      });
     })
   }
 
 }
+
+// Mostrar teclado virtual
+const aulas = document.querySelectorAll('.aula');
+aulas.forEach(element=>{
+  new ControllerKeyboard().createKeyboardVirtual(element)
+})

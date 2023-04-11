@@ -2,7 +2,7 @@ export class Navigate{
   constructor(event){
     this.event = event || null;
     this.menu = document.querySelector('.navbar');
-    this.arrPai = ['whites', 'blacks', 'octave', 'keyboard', 'aula', 'content'];
+    this.arrPai = ['video', 'whites', 'blacks', 'octave', 'keyboard', 'aula', 'content'];
     event? this.classe = event.classList[0]:'';
     event? this.classePai = event.parentNode.classList[0]:'';
     event? this.data = event.dataset.aula:'';

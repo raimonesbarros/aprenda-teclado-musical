@@ -8,9 +8,7 @@ let modelKeyboard = {
     ['', '', '', '', '', '', '5-E ou 1-D', '2-D', '3-D', '1-D', '2-D', '3-D', '4-D']
   ],
 
-  cifra: [
-    ['C# ou Db', 'D# ou Eb', ' ', 'F# ou Gb', 'G# ou Ab', 'A# ou Bb', 'C', 'D', 'E', 'F', 'G', 'A', 'B'],
-  ],
+  cifra: ['C# ou Db', 'D# ou Eb', ' ', 'F# ou Gb', 'G# ou Ab', 'A# ou Bb', 'C', 'D', 'E', 'F', 'G', 'A', 'B'],
 
   padrao: ['C# ou Db', 'D# ou Eb', ' ', 'F# ou Gb', 'G# ou Ab', 'A# ou Bb', 'C', 'D', 'E', 'F', 'G', 'A', 'B'],
 
@@ -29,25 +27,24 @@ class TecladoVirtual{
     this.local = '';
   }
 
-  showTeclado(modelKeyboardo, aula, local){
-    this.modelKeyboardo = modelKeyboardo;
+  showTeclado(model, aula, local){
+    this.model = model;
     this.aula   = aula;
     this.local  = document.querySelector(`#${local} .keyboard`);
-    if(this.modelKeyboardo=='tm1' && modelKeyboard[this.aula]){
+    if(this.model=='tm1' && modelKeyboard[this.aula]){
       this.createOctave(modelKeyboard[this.aula], 3)
     }
-    if(this.modelKeyboardo=='tm2' && modelKeyboard[this.aula]){
+    if(this.model=='tm2' && modelKeyboard[this.aula]){
       this.createOctave(modelKeyboard[this.aula], 2)
       this.createOctave(modelKeyboard[this.aula], 3)
     }
-    if(this.modelKeyboardo=='tm3' && modelKeyboard[this.aula]){
+    if(this.model=='tm3' && modelKeyboard[this.aula]){
       this.createOctave(modelKeyboard[this.aula][0], 2)
       this.createOctave(modelKeyboard[this.aula][1], 3)
     }
   }
 
-  playAudio(event){
-    let dataAudio = event.dataset.audio;
+  playAudio(dataAudio){
     let audio = new Audio(`audio/${dataAudio}.mp3`);
     audio.play()
   }
@@ -86,29 +83,26 @@ class TecladoVirtual{
   
 }
 
-
-let chord = [];
+export let key = '';
 class TecladoFisico{
-  constructor(comando, nota, forca){
-    this.comando = comando || null;
-    this.nota = nota || null;
-    this.forca = forca || null;
+  constructor(){
     this.allKeys = [];
+    this.chord = [];
   }
   
-  noteTouched(){
+  noteTouched(comando, nota, forca){
     this.createArrNotes()
-    let note = this.allKeys[this.nota];
-    if(this.comando==144){
-      chord.push(note);
-    } else if(this.comando==128){
-      chord = chord.filter(el=>el!=note);
+    let note = this.allKeys[nota];
+    if(comando==144){
+      key = note;
+      this.chord.push(note);
+    } else if(comando==128){
+      this.chord = this.chord.filter(el=>el!=note);
     }
-    console.log(chord)
   }
 
   createArrNotes(){
-    let notes = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+    let notes = ['C', 'C# ou Db', 'D', 'D# ou Eb', 'E', 'F', 'F# ou Gb', 'G', 'G# ou Ab', 'A', 'A# ou Bb', 'B'];
     for(let i=0; i<=10; i++){
       this.allKeys.push(...notes)
     }

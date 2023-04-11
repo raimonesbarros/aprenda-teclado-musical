@@ -18,9 +18,9 @@
           <h1>@<span>userName</span></h1>
         </li>
         <ul class="nav-list">
-          <li><button data-aula="apresentacao" class="ir dropbtn pointer">O Curso</button></li>
-          <li><button data-aula="membro" class="ir dropbtn pointer">Membros</button></li>
-          <li><button data-aula="teclado" class="ir dropbtn pointer">O teclado</button></li>
+          <!-- <li><button data-aula="apresentacao" class="ir dropbtn pointer">O Curso</button></li>
+          <li><button data-aula="membro" class="ir dropbtn pointer">Membros</button></li> -->
+          <li><button data-aula="teclado" class="ir dropbtn pointer">O Teclado</button></li>
           <li class="dropdown">
             <button class="dropbtn">As notas</button>
             <ul class="dropdown-content">
@@ -77,17 +77,19 @@
         </div>
       </nav>
       <section class="show">
-        <img class="btn_menu icon pointer" src="https://icongr.am/clarity/menu.svg?size=50&color=000000" alt="Botão de menu">
-        <img class="btn_menu icon pointer disable" src="https://icongr.am/clarity/menu.svg?size=50&color=ffffff" alt="Botão de menu">
+        <div class="btn_menu pointer">
+          <img class="btn_menu icon pointer" src="https://icongr.am/clarity/menu.svg?size=50&color=000000" alt="Botão de menu">
+          <img class="btn_menu icon pointer disable" src="https://icongr.am/clarity/menu.svg?size=50&color=ffffff" alt="Botão de menu">
+        </div>
         <section class="content">
-          <div id="teclado" class="aula disable">
+          <div id="teclado" class="aula tm2 padrao">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">O Teclado Musical</h2>
             </div>
-            <div>Img teclado</div>
-          </div>       
-          <div id="notas-teoria" class="aula tm1 notas ">
+            <div class="keyboard"></div>
+          </div>
+          <div id="notas-teoria" class="aula tm1 notas  disable">
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">As notas</h2>
@@ -129,7 +131,7 @@
             <div class="video">
               <video src="">Video</video>
               <h2 class="title">Cifras</h2>
-              <h2>Pressione a tecla para saber sua cifra!</h2>
+              <h2 class="title">Pressione a tecla para saber sua cifra!</h2>
             </div>
             <h1></h1>
             <div class="keyboard">
