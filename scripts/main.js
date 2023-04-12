@@ -9,12 +9,8 @@ controller_navigate.init()
 /* TECLADO FISICO */
 
 // Verifica se o navegador tem acesso MIDI
-if(navigator.requestMIDIAccess){
-  navigator.requestMIDIAccess().then(evt=>{
-    controller_keyboard.midiSuccess(evt)
-  }, ()=>{
-    controller_keyboard.midiFailure()
-  });
+if(navigator.requestMIDIAccess) { navigator.requestMIDIAccess()
+  .then(evt=> controller_keyboard.midiSuccess(evt), ()=> controller_keyboard.midiFailure());
 }
 
 /* TECLADO VIRTUAL */
@@ -59,37 +55,30 @@ document.addEventListener('touchmove', e=>{
 
 });
 
-onTouchEnter('.keyboard button', element=>{
-  let content = element.innerText;
-  let parent = element.parentNode.parentNode.parentNode.parentNode.id;
-  let dataAudio = element.dataset.audio
-  controller_keyboard.touchMove(element, content, parent, dataAudio);
-});
+const infoKey = {};
 
-// Tocar 
+function notify(element) {
+  infoKey.element = element;
+  infoKey.content = element.innerText;
+  infoKey.parent = element.parentNode.parentNode.parentNode.parentNode.id;
+  infoKey.dataAudio = element.dataset.audio;
+  controller_keyboard.touchMove(infoKey);
+}
+
+// Tocar
+onTouchEnter('.keyboard button', element=> notify(element));
+
 const btnKeyboard = document.querySelectorAll('.keyboard button');
 btnKeyboard.forEach(tecla=>{
-  tecla.addEventListener('mousedown', element=>{
-    let el = element.target;
-    let content = el.innerText;
-    let parent = el.parentNode.parentNode.parentNode.parentNode.id;
-    let dataAudio = el.dataset.audio
-    controller_keyboard.touchMove(el, content, parent, dataAudio);
-  });
-  tecla.addEventListener('mouseleave', ()=>{controller_keyboard.touchEnd();});
-  tecla.addEventListener('mouseup', ()=>{controller_keyboard.touchEnd();});
+  const events = ['mouseleave', 'mouseup', 'touchend'];
+  tecla.addEventListener('mousedown', element=> notify(element.target));
   tecla.addEventListener('touchstart', evt=>{evt.target.classList.add('keyOn');});
-  tecla.addEventListener('touchend', ()=>{controller_keyboard.touchEnd();});
+  events.map(evt=> tecla.addEventListener(evt, ()=> controller_keyboard.touchEnd()))
 })
-
 
 /* EVENTOS DE NAVEGAÇÃO */
-document.addEventListener('click', evt=>{
-  controller_navigate.navigateEvent(evt);
-})
-
+document.addEventListener('click', evt=> controller_navigate.navigateEvent(evt))
 
 /* MODE | THEME */
 const mode = document.querySelectorAll('.mode');
 mode.forEach(element=> { controller_navigate.modeToggle(element)});
-

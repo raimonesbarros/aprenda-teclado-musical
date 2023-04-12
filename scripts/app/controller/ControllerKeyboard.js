@@ -21,18 +21,12 @@ export class ControllerKeyboard{
     this.teclado_virtual.showTeclado(modelo, aula, local)
   }
 
-  touchMove(element, content, parent, dataAudio){
+  touchMove(infoKey){
     this.touchEnd()
-    element.classList.add('keyOn');
-    this.teclado_virtual.playAudio(dataAudio)
-    this.aulas.showNote(content, parent);
+    infoKey.element.classList.add('keyOn');
+    this.teclado_virtual.playAudio(infoKey.dataAudio)
+    this.aulas.showNote(infoKey.content, infoKey.parent);
   }
-
-  // touchStart(element){
-  //   this.teclado_virtual.playAudio(element)
-  //   this.aulas.showNote(element);
-  //   element.classList.add('keyOn')
-  // }
 
   touchEnd(){
     let buttons = document.querySelectorAll('.keyboard button');
