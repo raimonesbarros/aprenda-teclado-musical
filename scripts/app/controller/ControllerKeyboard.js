@@ -1,8 +1,7 @@
 import { Midi } from "../model/Midi.js";
-import { TecladoVirtual, TecladoFisico } from "../model/Keyboard.js";
+import { TecladoVirtual, TecladoFisico, key } from "../model/Keyboard.js";
 import { Aulas } from "../model/Aulas.js";
 import { Repository } from "./Repository.js";
-import { key } from "../model/Keyboard.js";
 
 
 export class ControllerKeyboard{
