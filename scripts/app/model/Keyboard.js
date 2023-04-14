@@ -84,6 +84,7 @@ class TecladoVirtual{
 }
 
 export let key = '';
+export let position = 0;
 class TecladoFisico{
   constructor(){
     this.allKeys = [];
@@ -95,6 +96,7 @@ class TecladoFisico{
     let note = this.allKeys[nota];
     if(comando==144){
       key = note;
+      position = nota;
       this.chord.push(note);
     } else if(comando==128){
       this.chord = this.chord.filter(el=>el!=note);

@@ -1,5 +1,5 @@
 import { Midi } from "../model/Midi.js";
-import { TecladoVirtual, TecladoFisico, key } from "../model/Keyboard.js";
+import { TecladoVirtual, TecladoFisico, key, position } from "../model/Keyboard.js";
 import { Aulas } from "../model/Aulas.js";
 import { Repository } from "./Repository.js";
 
@@ -24,7 +24,7 @@ export class ControllerKeyboard{
     this.touchEnd()
     infoKey.element.classList.add('keyOn');
     this.teclado_virtual.playAudio(infoKey.dataAudio)
-    this.aulas.showNote(infoKey.content, infoKey.parent);
+    this.aulas.learn(infoKey);
   }
 
   touchEnd(){
@@ -42,8 +42,12 @@ export class ControllerKeyboard{
       input.addEventListener('midimessage', input=> {
         this.midi.updateKeys(input)
         this.repository.getRepo('_info')
-        let parent = this.repository.objLocal[0].aula;
-        this.aulas.showNote(key, parent);
+        const infoKey = {
+          position: position,
+          content: key,
+          parent: this.repository.objLocal[0].aula
+        }
+        if(input.data[0]==144) this.aulas.learn(infoKey)
       });
     })
   }

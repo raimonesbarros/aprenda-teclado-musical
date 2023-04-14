@@ -12,14 +12,17 @@ export class Repository{
   }
 
   initRepo(){
-    if(!localStorage.getItem('_info')){
-      this._objJSON = JSON.stringify(this._objLocal);
-      localStorage.setItem('_info', this._objJSON);
-    }
     if(!localStorage.getItem('_personList')){
       this._objJSON = JSON.stringify(this._objLocal);
       localStorage.setItem('_personList', this._objJSON);
     }
+    if(!localStorage.getItem('_info')){
+      this._objLocal.mode = 'dark';
+      this._objLocal.aula = 'teclado';
+      this._objJSON = JSON.stringify(this._objLocal);
+      localStorage.setItem('_info', this._objJSON);
+    }
+
   }
 
   getRepo(repo){

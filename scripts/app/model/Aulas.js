@@ -16,41 +16,66 @@ export class Aulas{
     this.random = 0;
   }
 
-  showNote(content, parent){
-    this.showSimple(content, parent)
-    this.notesPratic(content, parent)
+  learn(infoKey){
+    // console.log(infoKey)
+    if(infoKey.position){
+      this.aulaNotes(infoKey, 'fisico')
+    } else{
+      this.aulaNotes(infoKey, 'digital')
+    }
+
   }
+
+  aulaNotes(infoKey, tipo){
+    if(tipo=='fisico'){
+      if(infoKey.parent=='notas-teoria'){
+        let i = modelAulas.cifra.indexOf(infoKey.content)
+        this.showSimple(modelAulas.notas[i], infoKey.parent)
+      }
+      if(infoKey.parent=='notas-pratica'){
+        let i = modelAulas.cifra.indexOf(infoKey.content)
+        this.showPratic(modelAulas.notas[i], infoKey.parent)
+      }
+    }
+
+    if(tipo=='digital'){
+      if(infoKey.parent=='notas-teoria'){
+        this.showSimple(infoKey.content, infoKey.parent)
+      }
+      if(infoKey.parent=='notas-pratica'){
+        this.showPratic(infoKey.content, infoKey.parent)
+      }
+    }
+
+  }
+
+  
 
   showSimple(content, parent){
-    let tipo = parent.slice(-6);
     let local = document.querySelector(`#${parent} h1`);
-    tipo=='teoria'? local.innerHTML = content:''
+    local.innerHTML = content;
   }
 
-  notesPratic(content, parent){
-    let tipo = parent.slice(-7);
+  showPratic(content, parent){
     let local = document.querySelector(`#${parent} h1`);
-    if(tipo=='pratica'){
-      let lesson = parent.slice(0,5);
-      if(content==local.textContent){
-        this.randomize(modelAulas[lesson]);
-        local.classList.add('success');
-        setTimeout(()=>{
-          local.classList.remove('success');
-          local.innerHTML = modelAulas[lesson][this.random];
-        }, 500)
-      } else{
-        local.classList.add('fail');
-        setTimeout(()=>{
-          local.classList.remove('fail');
-        }, 500)
-      }
+    let lesson = parent.slice(0,5);
+    if(content==local.textContent){
+      this.randomize(modelAulas[lesson]);
+      local.classList.add('success');
+      setTimeout(()=>{
+        local.classList.remove('success');
+        local.innerHTML = modelAulas[lesson][this.random];
+      }, 500)
+    } else{
+      local.classList.add('fail');
+      setTimeout(()=>{
+        local.classList.remove('fail');
+      }, 500)
     }
   }
 
   randomize(arr){
     this.random = Math.floor(Math.random()*arr.length)
   }
-
 
 }
