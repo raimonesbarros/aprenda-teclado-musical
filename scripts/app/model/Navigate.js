@@ -29,6 +29,11 @@ export class Navigate{
     item.classList.remove('disable')
   }
 
+  level(evt){
+    let event = evt.target
+    event.classList.add('current')
+  }
+
   conection(){
     const info = document.querySelector('.info')
     if(this.classe=='dot-connect'){
@@ -39,3 +44,19 @@ export class Navigate{
   }
 
 }
+
+let level_notes = document.querySelectorAll('.level-notes button')
+level_notes.forEach(el=>{
+  el.addEventListener('click', evt=> {
+    level_notes.forEach(el=>el.classList.remove('current'))  
+    new Navigate().level(evt)
+  })
+})
+
+let level_cifra = document.querySelectorAll('.level-cifra button')
+level_cifra.forEach(el=>{
+  el.addEventListener('click', evt=> {
+    level_cifra.forEach(el=>el.classList.remove('current'))  
+    new Navigate().level(evt)
+  })
+})

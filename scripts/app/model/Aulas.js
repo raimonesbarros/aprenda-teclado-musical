@@ -17,7 +17,7 @@ export class Aulas{
   }
 
   learn(infoKey){
-    console.log(infoKey)
+    // console.log(infoKey)
     if(infoKey.position){
       this.aulaNotes(infoKey, 'fisico')
       this.aulaDedos(infoKey, 'fisico')
@@ -88,15 +88,23 @@ export class Aulas{
   }
 
   showPratic(content, parent){
+    let level = document.querySelector(`#${parent} .current`)
     let local = document.querySelector(`#${parent} h1`);
     let lesson = parent.slice(0,5);
+    let arr = []
     if(content==local.textContent){
-      this.randomize(modelAulas[lesson]);
-      local.classList.add('success');
-      setTimeout(()=>{
-        local.classList.remove('success');
-        local.innerHTML = modelAulas[lesson][this.random];
-      }, 500)
+      if(level.textContent=='Nível 1'){
+        arr = modelAulas[lesson].slice(5,8)
+        this.success(arr, local)
+      }
+      if(level.textContent=='Nível 2'){
+        arr = modelAulas[lesson].slice(5)
+        this.success(arr, local)
+      }
+      if(level.textContent=='Nível 3'){
+        arr = modelAulas[lesson].slice(0)
+        this.success(arr, local)
+      }
     } else{
       local.classList.add('fail');
       setTimeout(()=>{
@@ -107,6 +115,15 @@ export class Aulas{
 
   randomize(arr){
     this.random = Math.floor(Math.random()*arr.length)
+  }
+
+  success(arr, local){
+    this.randomize(arr);
+    local.classList.add('success');
+    setTimeout(()=>{
+      local.classList.remove('success');
+      local.innerHTML = arr[this.random];
+    }, 500)
   }
 
 }
