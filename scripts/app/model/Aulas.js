@@ -72,14 +72,23 @@ export class Aulas{
     }
   }
 
-  aulaCifras(infoKey, tipo){
-      if(infoKey.parent=='cifra-teoria'){
-        this.showSimple(infoKey.content, infoKey.parent)
-      }
-      if(infoKey.parent=='cifra-pratica'){
-        this.showPratic(infoKey.content, infoKey.parent)
-      }
+  aulaCifras(infoKey){
+    if(infoKey.parent=='cifra-teoria'){
+      this.showSimple(infoKey.content, infoKey.parent)
+    }
+    if(infoKey.parent=='cifra-pratica'){
+      this.showPratic(infoKey.content, infoKey.parent)
+    }
+  }
 
+  praticETM(infoKey){
+    const C = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+    const D = ['D', 'E', 'F#', 'G', 'A', 'B', 'C#'];
+    const E = ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#'];
+    const F = ['F', 'G', 'A', 'A#', 'C', 'D', 'E'];
+    const G = ['G', 'A', 'B', 'C', 'D', 'E', 'F#'];
+    const A = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'];
+    const B = ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#'];
   }
 
   showSimple(content, parent){

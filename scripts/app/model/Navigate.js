@@ -34,6 +34,16 @@ export class Navigate{
     event.classList.add('current')
   }
 
+  praticaETM(evt){
+    let event = evt.target
+    let content = event.textContent
+    let local = document.querySelector('#pratica-etM h1')
+    local.innerHTML = `${content} - `
+    event.classList.add('current')
+  }
+
+
+
   conection(){
     const info = document.querySelector('.info')
     if(this.classe=='dot-connect'){
@@ -58,5 +68,13 @@ level_cifra.forEach(el=>{
   el.addEventListener('click', evt=> {
     level_cifra.forEach(el=>el.classList.remove('current'))  
     new Navigate().level(evt)
+  })
+})
+
+const opCifra = document.querySelectorAll('.op-cifra button')
+opCifra.forEach(el=>{
+  el.addEventListener('click', evt=>{
+    opCifra.forEach(el=>el.classList.remove('current'))
+    new Navigate().praticaETM(evt)
   })
 })
