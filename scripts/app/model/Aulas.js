@@ -14,6 +14,7 @@ const modelAulas = {
 export class Aulas{
   constructor(){
     this.random = 0;
+    this.position = 1;
   }
 
   learn(infoKey){
@@ -22,10 +23,12 @@ export class Aulas{
       this.aulaNotes(infoKey, 'fisico')
       this.aulaDedos(infoKey, 'fisico')
       this.aulaCifras(infoKey, 'fisico')
+      this.praticETM(infoKey, 'fisico')
     } else{
       this.aulaNotes(infoKey, 'digital')
       this.aulaDedos(infoKey, 'digital')
       this.aulaCifras(infoKey, 'digital')
+      this.praticETM(infoKey, 'digital')
     }
 
   }
@@ -82,13 +85,38 @@ export class Aulas{
   }
 
   praticETM(infoKey){
-    const C = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-    const D = ['D', 'E', 'F#', 'G', 'A', 'B', 'C#'];
-    const E = ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#'];
-    const F = ['F', 'G', 'A', 'A#', 'C', 'D', 'E'];
-    const G = ['G', 'A', 'B', 'C', 'D', 'E', 'F#'];
-    const A = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'];
-    const B = ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#'];
+    const note = {
+      C: ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'],
+      D: ['D', 'E', 'F#', 'G', 'A', 'B', 'C#', 'D'],
+      E: ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#', 'E'],
+      F: ['F', 'G', 'A', 'A#', 'C', 'D', 'E', 'F'],
+      G: ['G', 'A', 'B', 'C', 'D', 'E', 'F#', 'G'],
+      A: ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#', 'A'],
+      B: ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#', 'B']
+    }
+
+    let content = infoKey.content; content.length>1? content=content.slice(0,2):''
+    const escala = document.querySelector(`#${infoKey.parent} .current`).textContent
+    const local = document.querySelector(`#${infoKey.parent} h1`)
+    if(content==note[escala][this.position]){
+      if(this.position<7){
+        local.innerHTML += `${content} - `
+        this.position+=1
+      } else{
+        local.innerHTML += content
+        local.classList.add('success');
+        setTimeout(()=>{
+          local.classList.remove('success');
+          local.innerHTML = `${escala} - `
+          this.position = 1
+        }, 1500)
+      }
+    }else {
+      local.classList.add('fail');
+      setTimeout(()=>{
+        local.classList.remove('fail');
+      }, 500)
+    }
   }
 
   showSimple(content, parent){

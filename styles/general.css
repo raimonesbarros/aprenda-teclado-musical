@@ -223,7 +223,7 @@ main section{
 
 }
 
-.aula h1{font-size: 2rem;}
+.aula h1{font-size: 1.5rem;}
 
 .aula .graus button{
   padding: .5rem;
@@ -297,7 +297,7 @@ main section{
   border-color: #777;
 }
 
-.keyOn{background-color: #a0ffa0 !important;}
+.keyOn{background-color: var(--mainColor) !important;}
 
 .keyboard .blacks .none{
   visibility: collapse;
