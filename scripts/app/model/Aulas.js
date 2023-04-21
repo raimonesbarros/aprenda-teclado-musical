@@ -98,24 +98,27 @@ export class Aulas{
     let content = infoKey.content; content.length>1? content=content.slice(0,2):''
     const escala = document.querySelector(`#${infoKey.parent} .current`).textContent
     const local = document.querySelector(`#${infoKey.parent} h1`)
-    if(content==note[escala][this.position]){
-      if(this.position<7){
-        local.innerHTML += `${content} - `
-        this.position+=1
-      } else{
-        local.innerHTML += content
-        local.classList.add('success');
+    if(infoKey.parent=='pratica-etM'){
+
+      if(content==note[escala][this.position]){
+        if(this.position<7){
+          local.innerHTML += `${content} - `
+          this.position+=1
+        } else{
+          local.innerHTML += content
+          local.classList.add('success');
+          setTimeout(()=>{
+            local.classList.remove('success');
+            local.innerHTML = `${escala} - `
+            this.position = 1
+          }, 1500)
+        }
+      }else {
+        local.classList.add('fail');
         setTimeout(()=>{
-          local.classList.remove('success');
-          local.innerHTML = `${escala} - `
-          this.position = 1
-        }, 1500)
+          local.classList.remove('fail');
+        }, 500)
       }
-    }else {
-      local.classList.add('fail');
-      setTimeout(()=>{
-        local.classList.remove('fail');
-      }, 500)
     }
   }
 
