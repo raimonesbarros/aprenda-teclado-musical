@@ -1,9 +1,17 @@
-# 🎹 Aprenda teclado musical
+# 🎹 Aprenda teclado musical :own
 
-## Aplicação pessoal para aprender a tocar teclado.
+## Aplicação pessoal para aprender a tocar teclado e praticar conhecimentos de desenvolvimento web
 
 <img align="center" src="./img/p10.jpg"/>
 
 ----
 
-## Em desenvolvimento...
+### Em desenvolvimento...
+
+----
+
+## Legenda
+:own - Projeto próprio
+
+----
+----
